@@ -1,18 +1,24 @@
-public class Rectangle {
+import javax.management.ValueExp;
 
-    private Point topLeft;
+public class Rectangle extends Shape {
+
     private int sideA , sideB;
 
-    public Rectangle(Point topLeft, int sideA, int sideB) {
-        this.topLeft = topLeft;
+    public static String class_name = "Rectangle";
+
+    public Rectangle(Point location, int sideA, int sideB) {
+        super(location);
         setSideA(sideA);
         setSideB(sideB);
+
     }
 
     public Rectangle(Point topLeft, int sideA) {
         this.topLeft = topLeft;
         setSideA(sideA);
         setSideB(sideA);
+        counter++;
+        counterforobject++;
     }
 
     public Point getTopLeft() {
@@ -29,8 +35,7 @@ public class Rectangle {
 
     public void setSideA(int sideA) {
         if (sideA < 0){
-            this.sideA = 0;
-            System.out.println("Side A can't be negative!!");
+            throw new IllegalArgumentException("Side A can't be negative");
         }
         else {
             this.sideA = sideA;
@@ -55,4 +60,15 @@ public class Rectangle {
     public int area(){
         return sideA * sideB;
     }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "location" + this.getlocation +
+                ", sideA=" + sideA +
+                ", sideB=" + sideB +
+                '}';
+    }
 }
+
+
